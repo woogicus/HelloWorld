@@ -17,7 +17,7 @@ function create() {
 	countText = game.add.text(550, 300, 'Souls: 0', { fontSize: '48px', fill: '#004444', align: "center"});
 	perSecondText = game.add.text(550, 350, 'Per Second: 0.5', { fontSize: '16px', fill: '#eeeeee', align: "center" });
 	//version tracking number (for less obvious changes)
-	var versionNumber = game.add.text(32, 32, 'Version ALPHA 0.05'{ align: 'left'});
+	var versionNumber = game.add.text(32, 32, 'Version ALPHA 0.05', { align: 'left'});
 	
 	
 	//Building buttons and corresponding text. 
