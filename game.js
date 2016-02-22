@@ -8,7 +8,7 @@ var countText;
 var perSecondText;
 var buildingButtonX = 950;
 var buildingButtonY = 40;
-var buttonSeparationY = 60  //Pixels between building buttons
+var buttonSeparationY = 55  //Pixels between building buttons
 var cursorButton; var cursorButtonText;
 var farmButton; var farmButtonText;
 function create() {
@@ -37,7 +37,7 @@ function create() {
 	farmButtonText.x = Math.floor(farmButton.x + 22);
     	farmButtonText.y = Math.floor(farmButton.y + 12);
     	//Towns
-	townButton = game.add.button(buildingButtonX, cursorButton.y + buttonSeparationY, 'basicButton', buyTown, this, 0, 1, 2);
+	townButton = game.add.button(buildingButtonX, farmButton.y + buttonSeparationY, 'basicButton', buyTown, this, 0, 1, 2);
 	townButton.scale.setTo(2.5, 2.5);
 	townButtonText = game.add.text(0, 0, "Towns      0" + "Cost: 250", style);
 	townButtonText.x = Math.floor(townButton.x + 22);
