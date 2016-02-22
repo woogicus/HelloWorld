@@ -15,14 +15,14 @@
     <![endif]-->
   </head>
   <body>
-    <div class="wrapper">
+    <div class="wrapper" id="gameZone">
     	<script type="text/javascript" src="phaser.js"></script>
     	<script src="//cdn.jsdelivr.net/phaser/2.2.2/phaser.min.js"></script>
      	<script type="text/javascript" src="main.js"></script>
 	<header> <h1 style="text-align:center"> SOULLLZZZ </h1></header>
 <script type="text/javascript">
 
-var game = new Phaser.Game(800, 600, Phaser.AUTO, '', { preload: preload, create: create, update: update });
+var game = new Phaser.Game(800, 600, Phaser.AUTO, 'gameZone', { preload: preload, create: create, update: update });
 
 function preload() {
 }
