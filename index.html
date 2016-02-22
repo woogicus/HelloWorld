@@ -31,19 +31,27 @@ function preload() {
 var countText; 
 var perSecondText;
 var cursorButton; var cursorButtonText;
+var farmButton; var farmButtonText;
 function create() {
 	game.stage.backgroundColor = 0x8d8d8d;
 	//Souls count in the center.
 	countText = game.add.text(600, 300, 'Souls: 0', { fontSize: '48px', fill: '#000', align: "center"});
 	perSecondText = game.add.text(600, 350, 'Per Second: 0.5', { fontSize: '16px', fill: '#000', align: "center" });
-	//Building buttons and corresponding text.
-	cursorButton = game.add.button(950, 120, 'basicButton', buyCursor, this, 2, 1, 0);
-	cursorButton.scale.setTo(2.5, 2.5);
+	//Building buttons and corresponding text. 
+	//Font styling for all building buttons.
 	var style = { font: "16px Arial", fill: "#004444", wordWrap: true, wordWrapWidth: cursorButton.width, align: "center" };
-
+	//Cursors
+	cursorButton = game.add.button(950, 40, 'basicButton', buyCursor, this, 2, 1, 0);
+	cursorButton.scale.setTo(2.5, 2.5);
 	cursorButtonText = game.add.text(0, 0, "- Cursors      1" + "/nCost: 10", style);
 	cursorButtonText.x = Math.floor(cursorButton.x + 12);
     	cursorButtonText.y = Math.floor(cursorButton.y + 7);
+    	//Farms
+	farmButton = game.add.button(950, 60, 'basicButton', buyFarm, this, 2, 1, 0);
+	farmButton.scale.setTo(2.5, 2.5);
+	farmButtonText = game.add.text(0, 0, "- Farms      0" + "/nCost: 50", style);
+	farmButtonText.x = Math.floor(farmButton.x + 12);
+    	farmButtonText.y = Math.floor(farmButton.y + 7);
 
 	//The primary increment function.
 	game.time.events.loop(200, incrementByProd, this);
@@ -94,7 +102,7 @@ function prettify(input){
 //Building button text and purchase functions.
 function resetButtons(){
 	// Update button text
-	var nextCost = Math.floor(9 * Math.pow(1.15,cursors));       //works out the cost of the next cursor
+	var nextCost = Math.floor(9 * Math.pow(1.15,cursorsBought));       //works out the cost of the next cursor
     	cursorButtonText.text = "Cursors: " + cursorsBought + "  Cost: " + nextCost; //Display on button text
 	nextCost = Math.floor(50 * Math.pow(1.15,farms));            //Same for farms          
 	farmButtonText.text = "Farms: " + farms + "  Cost: " + nextCost; 
@@ -105,9 +113,9 @@ function buyCursor(){
     if(soulsCount >= cursorCost){                                   //checks that the player can afford the cursor
         cursorsBought++;                                               //increases number of cursors
     	soulsCount = soulsCount - cursorCost;                          //removes the cookies spent
-		var nextCost = Math.floor(cursorBaseCost * Math.pow(1.15,cursors));       //works out the cost of the next cursor
-        	cursorButtonText.text = "Cursors: " + cursorsBought + "  Cost: " + nextCost; 
-		countText.text = 'Souls: ' + prettify(soulsCount);
+	var nextCost = Math.floor(cursorBaseCost * Math.pow(1.15,cursorsBought)); //works out the cost of the next cursor
+        cursorButtonText.text = "Cursors: " + cursorsBought + "  Cost: " + nextCost; 
+	countText.text = 'Souls: ' + prettify(soulsCount);
     };
 };
 
@@ -115,9 +123,9 @@ function buyFarm(){
     var farmCost = Math.floor (farmBaseCost * Math.pow(1.15,farms));      
     if(soulsCount >= farmCost){                                   
         farms++;                                     
-    	cookies = cookies - farmCost;  
+    	soulsCount = soulsCount - farmCost;  
 		var nextCost = Math.floor(farmBaseCost * Math.pow(1.15,farms));                       
-		farmButtonText.text = "Farms: " + cursors + "  Cost: " + nextCost; 
+		farmButtonText.text = "Farms: " + farms + "  Cost: " + nextCost; 
 		countText.text = 'Souls: ' + prettify(soulsCount);
     };
 };
