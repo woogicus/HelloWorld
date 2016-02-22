@@ -44,6 +44,9 @@ function create() {
 	cursorButtonText = game.add.text(0, 0, "- Cursors      1" + "/nCost: 10", style);
 	cursorButtonText.x = Math.floor(cursorButton.x + 5);
     	cursorButtonText.y = Math.floor(cursorButton.y + 15);
+
+	//The primary increment function.
+	game.time.events.loop(Phaser.Timer.SECOND, incrementByProd, this);
 }
 
 //Building values that need saved: Count, base production, production multiplier.
@@ -64,7 +67,6 @@ var autoSave = -1;
 
 //Main game stuff.  Basic increment function, window update interval, number printing.
 function update() {
-	game.time.events.loop(gameTick, incrementByProd, this);
     	
 }
 
