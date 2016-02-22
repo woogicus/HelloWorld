@@ -19,7 +19,7 @@ function create() {
 	countText = game.add.text(550, 300, 'Souls: 0', { fontSize: '48px', fill: '#004444', align: "center"});
 	perSecondText = game.add.text(550, 350, 'Per Second: 0.5', { fontSize: '16px', fill: '#eeeeee', align: "center" });
 	//version tracking number (for less obvious changes)
-	var versionNumber = game.add.text(32, 32, 'Version ALPHA 0.081', { align: 'left'});
+	var versionNumber = game.add.text(32, 32, 'Version ALPHA 0.082', { align: 'left'});
 	savedText = game.add.text(32, 64, '', { align: 'left'});
 	
 	
@@ -173,7 +173,7 @@ var farmUpgrade10Bought = false;
 // Save and load functions.
 function saveGame(){
 	var save = {
-		cookies: cookies,
+		soulsCount: soulsCount,
 		cursorsBought: cursorsBought,
 		cursorMulti: cursorMulti,
 		farms: farms,
@@ -201,7 +201,7 @@ function loadGame(){
 	var savegame = JSON.parse(localStorage.getItem("save"));
 	if (savegame != null){
 		// Currency total.
-		if (typeof savegame.cookies !== "undefined") cookies = savegame.cookies;
+		if (typeof savegame.soulsCount !== "undefined") soulsCount = savegame.soulsCount;
 		// Building totals and current multipliers
 		if (typeof savegame.cursorsBought !== "undefined") cursorsBought = savegame.cursorsBought;
 		if (typeof savegame.cursorMulti !== "undefined") cursorMulti = savegame.cursorMulti;
@@ -220,7 +220,7 @@ function loadGame(){
 }
 function deleteSave(){
 	localStorage.removeItem("save");
-	cookies = 0;
+	soulsCount = 0;
 	cursorsBought = 1;
 	farms = 0;
 	towns = 0;
