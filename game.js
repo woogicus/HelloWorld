@@ -19,7 +19,7 @@ function create() {
 	countText = game.add.text(550, 300, 'Souls: 0', { fontSize: '48px', fill: '#004444', align: "center"});
 	perSecondText = game.add.text(550, 350, 'Per Second: 0.5', { fontSize: '16px', fill: '#eeeeee', align: "center" });
 	//version tracking number (for less obvious changes)
-	var versionNumber = game.add.text(32, 32, 'Version ALPHA 0.08', { align: 'left'});
+	var versionNumber = game.add.text(32, 32, 'Version ALPHA 0.081', { align: 'left'});
 	savedText = game.add.text(32, 64, '', { align: 'left'});
 	
 	
@@ -32,33 +32,33 @@ function create() {
 	var style = { font: "12px Arial", fill: "#004444", wordWrap: true, wordWrapWidth: cursorButton.width, align: "center" };
 	cursorButtonText = game.add.text(0, 0, "Laborers      1" + "Cost: 10", style);
 	cursorButtonText.x = Math.floor(cursorButton.x + 12);
-    	cursorButtonText.y = Math.floor(cursorButton.y + 15);
+    	cursorButtonText.y = Math.floor(cursorButton.y + 16);
     	//Farms
 	farmButton = game.add.button(buildingButtonX, cursorButton.y + buttonSeparationY, 'basicButton', buyFarm, this, 0, 1, 2);
 	farmButton.scale.setTo(2.5, 2.5);
 	farmButtonText = game.add.text(0, 0, "Farms      0" + "Cost: 50", style);
 	farmButtonText.x = Math.floor(farmButton.x + 12);
-    	farmButtonText.y = Math.floor(farmButton.y + 15);
+    	farmButtonText.y = Math.floor(farmButton.y + 16);
     	//Towns
 	townButton = game.add.button(buildingButtonX, farmButton.y + buttonSeparationY, 'basicButton', buyTown, this, 0, 1, 2);
 	townButton.scale.setTo(2.5, 2.5);
 	townButtonText = game.add.text(0, 0, "Towns      0" + "Cost: 250", style);
 	townButtonText.x = Math.floor(townButton.x + 12);
-    	townButtonText.y = Math.floor(townButton.y + 15);
+    	townButtonText.y = Math.floor(townButton.y + 16);
 
 
 	//Save Game button.
 	saveGameButton = game.add.button(25, 550, 'basicButton', saveGame, this, 0, 1, 2);
 	saveGameButton.scale.setTo(1.5, 1.5);
 	saveButtonText = game.add.text(0, 0, "Save Game", style);
-	saveButtonText.x = Math.floor(saveGameButton.x + 27);
-    	saveButtonText.y = Math.floor(saveGameButton.y + 15);
+	saveButtonText.x = Math.floor(saveGameButton.x + 20);
+    	saveButtonText.y = Math.floor(saveGameButton.y + 11);
     	//Delete Save button.
 	deleteSaveButton = game.add.button(155, 550, 'basicButton', deleteSave, this, 0, 1, 2);
 	deleteSaveButton.scale.setTo(1.5, 1.5);
 	deleteButtonText = game.add.text(0, 0, "DELETE SAVE", style);
-	deleteButtonText.x = Math.floor(deleteSaveButton.x + 27);
-    	deleteButtonText.y = Math.floor(deleteSaveButton.y + 15);
+	deleteButtonText.x = Math.floor(deleteSaveButton.x + 20);
+    	deleteButtonText.y = Math.floor(deleteSaveButton.y + 11);
 	//Reset all building button text to reflect loaded game.
 	resetButtons();
 	//The primary increment function.
@@ -184,10 +184,18 @@ function saveGame(){
 		cursorUpgrade10Bought: cursorUpgrade10Bought,
 		farmUpgrade10Bought: farmUpgrade10Bought
 	}
-	
-	localStorage.setItem("save",JSON.stringify(save));
-	savedText.text = 'Game Saved!';
-	console.log("game saved");
+	try{
+		localStorage.setItem("save",JSON.stringify(save));
+	}
+	catch (e))
+		console.log ("game save error!");
+		console.log(e);
+		savedText.text = 'SaveGame Error!';
+	}
+	else{
+		savedText.text = 'Game Saved!';
+		console.log("game saved");
+	}
 }
 function loadGame(){
 	var savegame = JSON.parse(localStorage.getItem("save"));
