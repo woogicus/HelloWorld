@@ -37,25 +37,27 @@ var farmButton; var farmButtonText;
 function create() {
 	game.stage.backgroundColor = 0x8d8d8d;
 	//Souls count in the center.
-	countText = game.add.text(600, 300, 'Souls: 0', { fontSize: '48px', fill: '#000', align: "center"});
-	perSecondText = game.add.text(600, 350, 'Per Second: 0.5', { fontSize: '16px', fill: '#000', align: "center" });
+	countText = game.add.text(550, 300, 'Souls: 0', { fontSize: '48px', fill: '#000', align: "center"});
+	perSecondText = game.add.text(550, 350, 'Per Second: 0.5', { fontSize: '16px', fill: '#000', align: "center" });
 	//Building buttons and corresponding text. 
 	
 	//Cursors
-	cursorButton = game.add.button(buildingButtonX, buildingButtonY, 'basicButton', buyCursor, this, 2, 1, 0);
+	cursorButton = game.add.button(buildingButtonX, buildingButtonY, 'basicButton', buyCursor, this, 0, 1, 2);
 	cursorButton.scale.setTo(2.5, 2.5);
 	//Font styling for all building buttons.
 	var style = { font: "16px Arial", fill: "#004444", wordWrap: true, wordWrapWidth: cursorButton.width, align: "center" };
-	cursorButtonText = game.add.text(0, 0, "- Cursors      1" + "/nCost: 10", style);
+	cursorButtonText = game.add.text(0, 0, "Cursors      1" + "Cost: 10", style);
 	cursorButtonText.x = Math.floor(cursorButton.x + 22);
     	cursorButtonText.y = Math.floor(cursorButton.y + 12);
     	//Farms
-	farmButton = game.add.button(buildingButtonX, cursorButton.y + buttonSeparationY, 'basicButton', buyFarm, this, 2, 1, 0);
+	farmButton = game.add.button(buildingButtonX, cursorButton.y + buttonSeparationY, 'basicButton', buyFarm, this, 0, 1, 2);
 	farmButton.scale.setTo(2.5, 2.5);
-	farmButtonText = game.add.text(0, 0, "- Farms      0" + "/nCost: 50", style);
+	farmButtonText = game.add.text(0, 0, "Farms      0" + "Cost: 50", style);
 	farmButtonText.x = Math.floor(farmButton.x + 22);
     	farmButtonText.y = Math.floor(farmButton.y + 12);
 
+	//Reset all building button text to reflect loaded game.
+	resetButtonText();
 	//The primary increment function.
 	game.time.events.loop(200, incrementByProd, this);
 }
