@@ -1,0 +1,30 @@
+ <style>
+
+    p {
+
+        padding:5px;
+    }
+ 
+maingame {
+	color:black;
+    text-align:center;
+}
+buildings {
+    color:black;
+	text-align:center;
+    padding:5px;
+}
+upgrades {
+	text-align:center;
+    padding:5px;
+}
+statsArea {
+    text-align:center;
+    padding:5px;
+}
+spells {
+    color:black;
+    text-align:center;
+    padding:5px;
+}
+</style>
