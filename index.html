@@ -57,7 +57,7 @@ function create() {
     	farmButtonText.y = Math.floor(farmButton.y + 12);
 
 	//Reset all building button text to reflect loaded game.
-	resetButtonText();
+	resetButtons();
 	//The primary increment function.
 	game.time.events.loop(200, incrementByProd, this);
 }
