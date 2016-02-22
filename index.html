@@ -30,6 +30,9 @@ function preload() {
 
 var countText; 
 var perSecondText;
+var buildingButtonX = 950;
+var buildingButtonY = 40;
+var buttonSeparationY = 70  //Pixels between building buttons
 var cursorButton; var cursorButtonText;
 var farmButton; var farmButtonText;
 function create() {
@@ -40,19 +43,19 @@ function create() {
 	//Building buttons and corresponding text. 
 	
 	//Cursors
-	cursorButton = game.add.button(950, 40, 'basicButton', buyCursor, this, 2, 1, 0);
+	cursorButton = game.add.button(buildingButtonX, buildingButtonY, 'basicButton', buyCursor, this, 2, 1, 0);
 	cursorButton.scale.setTo(2.5, 2.5);
 	//Font styling for all building buttons.
 	var style = { font: "16px Arial", fill: "#004444", wordWrap: true, wordWrapWidth: cursorButton.width, align: "center" };
 	cursorButtonText = game.add.text(0, 0, "- Cursors      1" + "/nCost: 10", style);
-	cursorButtonText.x = Math.floor(cursorButton.x + 12);
-    	cursorButtonText.y = Math.floor(cursorButton.y + 7);
+	cursorButtonText.x = Math.floor(cursorButton.x + 22);
+    	cursorButtonText.y = Math.floor(cursorButton.y + 12);
     	//Farms
-	farmButton = game.add.button(950, 60, 'basicButton', buyFarm, this, 2, 1, 0);
+	farmButton = game.add.button(buildingButtonX, cursorButton.x + buttonSeparationY, 'basicButton', buyFarm, this, 2, 1, 0);
 	farmButton.scale.setTo(2.5, 2.5);
 	farmButtonText = game.add.text(0, 0, "- Farms      0" + "/nCost: 50", style);
-	farmButtonText.x = Math.floor(farmButton.x + 12);
-    	farmButtonText.y = Math.floor(farmButton.y + 7);
+	farmButtonText.x = Math.floor(farmButton.x + 22);
+    	farmButtonText.y = Math.floor(farmButton.y + 12);
 
 	//The primary increment function.
 	game.time.events.loop(200, incrementByProd, this);
