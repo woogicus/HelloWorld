@@ -28,14 +28,14 @@ function preload() {
 	game.load.spritesheet('basicButton', './flixel-button.png', 80, 20);
 }
 
-var soulsCount; var countText; 
-var perSecondText; var soulsPerSecond;
+var countText; 
+var perSecondText; var soulsPerSecond = 0.5;
 var cursorButton; var cursorButtonText;
 function create() {
 	game.stage.backgroundColor = 0x8d8d8d;
 	//Souls count in the center.
 	countText = game.add.text(600, 300, 'Souls: 0', { fontSize: '48px', fill: '#000', align: "center"});
-	perSecondText = game.add.text(650, 300, 'Per Second: 0.5', { fontSize: '16px', fill: '#000', align: "center" });
+	perSecondText = game.add.text(600, 350, 'Per Second: 0.5', { fontSize: '16px', fill: '#000', align: "center" });
 	//Building buttons and corresponding text.
 	cursorButton = game.add.button(950, 120, 'basicButton', buyCursor, this, 2, 1, 0);
 	cursorButton.scale.setTo(2.5, 2.5);
@@ -47,6 +47,7 @@ function create() {
 }
 
 //Building values that need saved: Count, base production, production multiplier.
+var soulsCount = 0;
 var cursors = 1;
 var cursorProd = 0.5;
 var cursorMulti = 1;
@@ -62,10 +63,20 @@ var gameTick = 200;	    // The "master" game speed.
 var autoSave = -1;
 
 //Main game stuff.  Basic increment function, window update interval, number printing.
-var score; var scoreText;
 function update() {
-	score += 1;
-    	countText.text = 'Score: ' + score;
+	soulsCount += 1;
+	incrementByProd();
+    	countText.text = 'Souls: ' + prettify(soulsCount);
+}
+
+
+function incrementByProd(){
+	//cookieClick(cursors);	
+	calcTotalProd();
+	soulsCount = soulsCount + (totalProd * (gameTick / tickInterval));
+	//document.getElementById("cookies").innerHTML = prettify(cookies);
+	//document.getElementById("cps").innerHTML = totalProd;
+
 }
 
 function calcTotalProd(){
