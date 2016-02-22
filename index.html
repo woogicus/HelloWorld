@@ -28,10 +28,15 @@ function preload() {
 	game.load.spritesheet('basicButton', './flixel-button.png', 80, 20);
 }
 
-var button;
+var cursorButton; var cursorButtonText;
 function create() {
-	button = game.add.button(game.world.centerX - 95, 400, 'basicButton', actionOnClick, this, 2, 1, 0);
-	button.scale.setTo(2, 2);
+	cursorButton = game.add.button(950, 120, 'basicButton', actionOnClick, this, 2, 1, 0);
+	cursorButton.scale.setTo(2.5, 2.5);
+	var style = { font: "16px Arial", fill: "#000044", wordWrap: true, wordWrapWidth: sprite.width, align: "center" };
+
+	text = game.add.text(0, 0, "- Buy Cursor -10", style);
+	text.x = Math.floor(cursorButton.x + cursorButton.width / 2);
+    	text.y = Math.floor(cursorButton.y + cursorButton.height / 2);
 }
 
 function update() {
