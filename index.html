@@ -17,47 +17,24 @@
   <body>
     <div class="wrapper">
     	<script type="text/javascript" src="phaser.js"></script>
+    	<script src="//cdn.jsdelivr.net/phaser/2.2.2/phaser.min.js"></script>
      	<script type="text/javascript" src="main.js"></script>
 	<header> <h1 style="text-align:center"> SOULLLZZZ </h1></header>
-	<maingame>
-		<p>
-		Souls: <span id="cookies">0</span> <br />
-		Per second: <span id="cps">0</span>
-		</p>
-	</maingame>	
-	
-	<buildings>	
-	<h3> Buildings </h3>
-		<p>
-		<button onclick="buyCursor()"><span id="cursorButtonText">Cursors: 1  Cost: 10</span></button>
-		<br />
-		<button onclick="buyFarm()"><span id="farmButtonText">Farms: 0  Cost: 50</span></button>
-		</p>
-	</buildings>
-	
-	<spells>
-	<h3> Spells </h3>
-		<p>
-		Mana bar will go here!
-		</p>
-	</spells>
-	
-	<upgrades>
-	<h3> Upgrades </h3>
-		<p>
-			<span id="upgradeZone"></span>
-		</p>
-	</upgrades>	
-	
-	<statsArea>
-	<h3> Stats </h3>
-		<p>
-		No stats to view yet!  Just you wait...
-		</p>
-		<p>
-		<button onclick="deleteSave()">HARD RESET</button>
-		</p>
-	</statsArea>
+<script type="text/javascript">
+
+var game = new Phaser.Game(800, 600, Phaser.AUTO, '', { preload: preload, create: create, update: update });
+
+function preload() {
+}
+
+function create() {
+}
+
+function update() {
+}
+
+</script>
+
     </div>
   </body>
 </html>
