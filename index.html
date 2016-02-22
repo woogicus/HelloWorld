@@ -29,7 +29,7 @@ function preload() {
 }
 
 var countText; 
-var perSecondText; var soulsPerSecond = 0.5;
+var perSecondText;
 var cursorButton; var cursorButtonText;
 function create() {
 	game.stage.backgroundColor = 0x8d8d8d;
@@ -41,9 +41,9 @@ function create() {
 	cursorButton.scale.setTo(2.5, 2.5);
 	var style = { font: "16px Arial", fill: "#004444", wordWrap: true, wordWrapWidth: cursorButton.width, align: "center" };
 
-	cursorButtonText = game.add.text(0, 0, "- Cursors      1/nCost: 10", style);
-	cursorButtonText.x = Math.floor(cursorButton.x + 100);
-    	cursorButtonText.y = Math.floor(cursorButton.y + 25);
+	cursorButtonText = game.add.text(0, 0, "- Cursors      1" + "/nCost: 10", style);
+	cursorButtonText.x = Math.floor(cursorButton.x);
+    	cursorButtonText.y = Math.floor(cursorButton.y);
 }
 
 //Building values that need saved: Count, base production, production multiplier.
@@ -64,16 +64,17 @@ var autoSave = -1;
 
 //Main game stuff.  Basic increment function, window update interval, number printing.
 function update() {
-	soulsCount += 1;
-	incrementByProd();
-    	countText.text = 'Souls: ' + prettify(soulsCount);
+	game.time.events.loop(gameTick, incrementByProd, this);
+    	
 }
 
 
 function incrementByProd(){
 	//cookieClick(cursors);	
 	calcTotalProd();
-	soulsCount = soulsCount + (totalProd * (gameTick / tickInterval));
+	soulsCount = soulsCount + (totalProd * (gameTick / tickInterval)); //Increment total souls
+	countText.text = 'Souls: ' + prettify(soulsCount);		   //Update running counter
+	perSecondText.text = 'Per Second: ' + prettify(totalProd);
 	//document.getElementById("cookies").innerHTML = prettify(cookies);
 	//document.getElementById("cps").innerHTML = totalProd;
 
@@ -88,8 +89,36 @@ function prettify(input){
 	return output;
 }
 
-function buyCursor () {
+//Building button text and purchase functions.
+function resetButtons(){
+	// Update button text
+	var nextCost = Math.floor(9 * Math.pow(1.15,cursors));       //works out the cost of the next cursor
+    	cursorButtonText.text = "Cursors: " + cursors + "  Cost: " + nextCost; //Display on button text
+	nextCost = Math.floor(50 * Math.pow(1.15,farms));            //Same for farms          
+	farmButtonText.text = "Farms: " + cursors + "  Cost: " + nextCost; 
 }
+
+function buyCursor(){
+    var cursorCost = Math.floor(cursorBaseCost * Math.pow(1.15,cursors));     //works out the cost of this cursor
+    if(soulsCount >= cursorCost){                                   //checks that the player can afford the cursor
+        cursors++;                                               //increases number of cursors
+    	soulsCount = soulsCount - cursorCost;                          //removes the cookies spent
+		var nextCost = Math.floor(cursorBaseCost * Math.pow(1.15,cursors));       //works out the cost of the next cursor
+        	cursorButtonText.text = "Cursors: " + cursors + "  Cost: " + nextCost; 
+		countText.text = 'Souls: ' + prettify(soulsCount);
+    };
+};
+
+function buyFarm(){
+    var farmCost = Math.floor (farmBaseCost * Math.pow(1.15,farms));      
+    if(soulsCount >= farmCost){                                   
+        farms++;                                     
+    	cookies = cookies - farmCost;  
+		var nextCost = Math.floor(farmBaseCost * Math.pow(1.15,farms));                       
+		farmButtonText.text = "Farms: " + cursors + "  Cost: " + nextCost; 
+		countText.text = 'Souls: ' + prettify(soulsCount);
+    };
+};
 
 </script>
 
