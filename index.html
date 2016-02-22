@@ -43,7 +43,7 @@ function create() {
 
 	cursorButtonText = game.add.text(0, 0, "- Cursors      1" + "/nCost: 10", style);
 	cursorButtonText.x = Math.floor(cursorButton.x);
-    	cursorButtonText.y = Math.floor(cursorButton.y);
+    	cursorButtonText.y = Math.floor(cursorButton.y + 30);
 }
 
 //Building values that need saved: Count, base production, production multiplier.
@@ -58,8 +58,8 @@ var farmMulti = 1;
 var cursorBaseCost = 9;
 var farmBaseCost = 50;
 var totalProd = 0;
-var tickInterval=1000;  // Modifiable by upgrades.
-var gameTick = 200;	    // The "master" game speed.
+var tickInterval= Phaser.Timer.SECOND;  // Modifiable by upgrades.
+var gameTick = Phaser.Timer.SECOND / 5;	    // The "master" game speed.
 var autoSave = -1;
 
 //Main game stuff.  Basic increment function, window update interval, number printing.
