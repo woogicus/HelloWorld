@@ -42,8 +42,8 @@ function create() {
 	var style = { font: "16px Arial", fill: "#004444", wordWrap: true, wordWrapWidth: cursorButton.width, align: "center" };
 
 	cursorButtonText = game.add.text(0, 0, "- Cursors      1" + "/nCost: 10", style);
-	cursorButtonText.x = Math.floor(cursorButton.x);
-    	cursorButtonText.y = Math.floor(cursorButton.y + 30);
+	cursorButtonText.x = Math.floor(cursorButton.x + 5);
+    	cursorButtonText.y = Math.floor(cursorButton.y + 15);
 }
 
 //Building values that need saved: Count, base production, production multiplier.
@@ -68,6 +68,9 @@ function update() {
     	
 }
 
+function render(){
+	game.debug.text("Time until event: " + game.time.events.duration.toFixed(0), 32, 32);
+}
 
 function incrementByProd(){
 	//cookieClick(cursors);	
