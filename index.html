@@ -25,12 +25,13 @@
 var game = new Phaser.Game(1200, 600, Phaser.AUTO, 'gameZone', { preload: preload, create: create, update: update });
 
 function preload() {
-	game.load.image('logo', './Phaser.2D.Glow.png');
+	game.load.spritesheet('basicButton', './flixel-button.png', 80, 20);
 }
 
 var button;
 function create() {
-	button = game.add.button(game.world.centerX - 95, 400, 'logo', actionOnClick, this, 2, 1, 0);
+	button = game.add.button(game.world.centerX - 95, 400, 'basicButton', actionOnClick, this, 2, 1, 0);
+	button.scale.setTo(2, 2);
 }
 
 function update() {
