@@ -30,13 +30,14 @@ function preload() {
 
 var cursorButton; var cursorButtonText;
 function create() {
+	game.stage.backgroundColor = 0x8d8d8d;
 	cursorButton = game.add.button(950, 120, 'basicButton', actionOnClick, this, 2, 1, 0);
 	cursorButton.scale.setTo(2.5, 2.5);
-	var style = { font: "16px Arial", fill: "#000044", wordWrap: true, wordWrapWidth: sprite.width, align: "center" };
+	var style = { font: "16px Arial", fill: "#004444", wordWrap: true, wordWrapWidth: cursorButton.width, align: "center" };
 
-	text = game.add.text(0, 0, "- Buy Cursor -10", style);
-	text.x = Math.floor(cursorButton.x + cursorButton.width / 2);
-    	text.y = Math.floor(cursorButton.y + cursorButton.height / 2);
+	cursorButtonText = game.add.text(0, 0, "- Buy Cursor -10", style);
+	cursorButtonText.x = Math.floor(cursorButton.x + cursorButton.width / 2);
+    	cursorButtonText.y = Math.floor(cursorButton.y + cursorButton.height / 2);
 }
 
 function update() {
