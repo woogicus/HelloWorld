@@ -187,7 +187,7 @@ function saveGame(){
 	try{
 		localStorage.setItem("save",JSON.stringify(save));
 	}
-	catch (e))
+	catch (e){
 		console.log ("game save error!");
 		console.log(e);
 		savedText.text = 'SaveGame Error!';
