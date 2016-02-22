@@ -184,15 +184,17 @@ function saveGame(){
 		cursorUpgrade10Bought: cursorUpgrade10Bought,
 		farmUpgrade10Bought: farmUpgrade10Bought
 	}
+	var success = true;
 	try{
 		localStorage.setItem("save",JSON.stringify(save));
 	}
 	catch (e){
+		success = false;
 		console.log ("game save error!");
 		console.log(e);
 		savedText.text = 'SaveGame Error!';
 	}
-	else{
+	if (success == true){
 		savedText.text = 'Game Saved!';
 		console.log("game saved");
 	}
