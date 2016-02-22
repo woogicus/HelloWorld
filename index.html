@@ -16,28 +16,47 @@
   </head>
   <body>
     <div class="wrapper">
-      <header>
-        <h1>Soul-grinder</h1>
-        <p>Incremental Project</p>
-        <p class="view"><a href="https://github.com/woogicus/Soul-Grinder">View the Project on GitHub <small>woogicus/Soul-Grinder</small></a></p>
-        <ul>
-          <li><a href="https://github.com/woogicus/Soul-Grinder/zipball/master">Download <strong>ZIP File</strong></a></li>
-          <li><a href="https://github.com/woogicus/Soul-Grinder/tarball/master">Download <strong>TAR Ball</strong></a></li>
-          <li><a href="https://github.com/woogicus/Soul-Grinder">View On <strong>GitHub</strong></a></li>
-        </ul>
-      </header>
-      <section>
-        <h1>
-<a id="soulgrinder" class="anchor" href="#soulgrinder" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>SoulGrinder</h1>
-
-<p>Incremental game in development.</p>
-      </section>
-    </div>
-    <footer>
-      <p>Project maintained by <a href="https://github.com/woogicus">woogicus</a></p>
-      <p>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></p>
-    </footer>
-    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
-    
+     	<script type="text/javascript" src="main.js"></script>
+	<header> <h1 style="text-align:center"> SOULLLZZZ </h1></header>
+	<maingame>
+		<p>
+		Souls: <span id="cookies">0</span> <br />
+		Per second: <span id="cps">0</span>
+		</p>
+	</maingame>	
+	
+	<buildings>	
+	<h3> Buildings </h3>
+		<p>
+		<button onclick="buyCursor()"><span id="cursorButtonText">Cursors: 1  Cost: 10</span></button>
+		<br />
+		<button onclick="buyFarm()"><span id="farmButtonText">Farms: 0  Cost: 50</span></button>
+		</p>
+	</buildings>
+	
+	<spells>
+	<h3> Spells </h3>
+		<p>
+		Mana bar will go here!
+		</p>
+	</spells>
+	
+	<upgrades>
+	<h3> Upgrades </h3>
+		<p>
+			<span id="upgradeZone"></span>
+		</p>
+	</upgrades>	
+	
+	<statsArea>
+	<h3> Stats </h3>
+		<p>
+		No stats to view yet!  Just you wait...
+		</p>
+		<p>
+		<button onclick="deleteSave()">HARD RESET</button>
+		</p>
+	</statsArea>
+	</body>
   </body>
 </html>
