@@ -1,3 +1,2 @@
-# HelloWorld
-Tutorial shaz
-There is now more stuff in this file.
+# SoulGrinder
+Incremental game in development.
