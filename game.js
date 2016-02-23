@@ -268,8 +268,8 @@ function saveGame(){
 		towns: towns,
 		townMulti: townMulti,
 		allMulti: allMulti,
-		currentMana: currentMana;
-		totalMana: totalMana;
+		currentMana: currentMana,
+		totalMana: totalMana,
 		purchasedUpgrades: purchasedUpgrades,
 		cursorUpgrade10Bought: cursorUpgrade10Bought,
 		farmUpgrade10Bought: farmUpgrade10Bought,
