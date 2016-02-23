@@ -179,6 +179,7 @@ var farmUpgrade10Bought = false;
 var townUpgrade10Bought = false;
 
 var upgradeArray = [];  // An array of upgrade objects
+var upgradeX = 40; var upgradeY = 150;  //Starter values
 //One upgrade: 
 /*
 	spriteIndex: Index for upgrade spritesheet
@@ -192,6 +193,7 @@ function resetUpgrades(){
 		upgradeArray[index].sprite.destroy();  //Remove the sprite
 		upgradeArray.pop(); // And trash the rest.
 	}
+	upgradeX = 40; upgradeY = 150;  //Reset these values. Important!
 //Rebuild the array of upgrade sprites
 	if (cursorsBought >= 10 && !cursorUpgrade10Bought) { // 10 cursors, production x2, cost 50
 		upgradeArray.push({spriteIndex: 0, func: cursorUpgrade10, sprite: 0});
@@ -210,7 +212,7 @@ function resetUpgrades(){
 	
 }
 //This is called for each item in the upgrade array.  Use the info passed to add a sprite to the game world.
-var upgradeX = 40; var upgradeY = 150;  //Starter values
+
 var upgradeSpacingX = 75; var upgradeSpacingY = 75;
 var upgradeMaxX = 340; var upgradeMaxY = 450
 function displayUpgrade(item){
