@@ -22,7 +22,7 @@ function create() {
 	countText = game.add.text(550, 300, 'Souls: 0', { fontSize: '48px', fill: '#004444', align: "center"});
 	perSecondText = game.add.text(550, 350, 'Per Second: 0.5', { fontSize: '16px', fill: '#eeeeee', align: "center" });
 	//version tracking number (for less obvious changes)
-	var versionNumber = game.add.text(32, 32, 'Version ALPHA 0.093', { align: 'left'});
+	var versionNumber = game.add.text(32, 32, 'Version ALPHA 0.094', { align: 'left'});
 	savedText = game.add.text(32, 64, '', { align: 'left'});
 	upgradeBanner = game.add.sprite(50, 100, 'upgradeHeader');
 	
@@ -216,7 +216,7 @@ var upgradeMaxX = 340; var upgradeMaxY = 450
 function displayUpgrade(item){
 	if (upgradeY <= upgradeMaxY){  //Stop printing if we run out of space.  TODO: improve?
 		item.sprite = game.add.sprite(upgradeX, upgradeY, 'upgradeSprites', item.spriteIndex);
-		sprite.inputEnabled = true;
+		item.sprite.inputEnabled = true;
 		item.sprite.input.useHandCursor = true;
         	item.sprite.events.onInputDown.add(item.func, this);
         	upgradeX += upgradeSpacingX;
