@@ -206,7 +206,7 @@ function resetUpgrades(){
 	// 10 towns, production x2, cost 1500
 	if (towns >= 10 && !townUpgrade10Bought) upgradeArray.push({spriteIndex: 2, func: townUpgrade10, sprite: 0});
 //Display on screen
-	upgradeArray.foreach(displayUpgrade);
+	upgradeArray.forEach(displayUpgrade);
 	
 }
 //This is called for each item in the upgrade array.  Use the info passed to add a sprite to the game world.
