@@ -178,7 +178,7 @@ var cursorUpgrade10Bought = false;
 var farmUpgrade10Bought = false;
 var townUpgrade10Bought = false;
 
-var upgradeArray [];  // An array of upgrade objects
+var upgradeArray = [];  // An array of upgrade objects
 //One upgrade: 
 /*
 	spriteIndex: Index for upgrade spritesheet
@@ -203,6 +203,7 @@ function resetUpgrades(){
 	//	upgradeText += "<br><button onclick='farmUpgrade10(250)'>Bronze Tractors - 250</button>";
         //	upgradeText += 'Increase Farm output by 100%';
 	}
+	// 10 towns, production x2, cost 1500
 	if (towns >= 10 && !townUpgrade10Bought) upgradeArray.push({spriteIndex: 2, func: townUpgrade10, sprite: 0});
 //Display on screen
 	upgradeArray.foreach(displayUpgrade);
