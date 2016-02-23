@@ -22,7 +22,7 @@ function create() {
 	countText = game.add.text(550, 300, 'Souls: 0', { fontSize: '48px', fill: '#004444', align: "center"});
 	perSecondText = game.add.text(550, 350, 'Per Second: 0.5', { fontSize: '16px', fill: '#eeeeee', align: "center" });
 	//version tracking number (for less obvious changes)
-	var versionNumber = game.add.text(32, 32, 'Version ALPHA 0.09', { align: 'left'});
+	var versionNumber = game.add.text(32, 32, 'Version ALPHA 0.091', { align: 'left'});
 	savedText = game.add.text(32, 64, '', { align: 'left'});
 	upgradeBanner = game.add.sprite(50, 100, 'upgradeHeader');
 	
@@ -193,7 +193,7 @@ function resetUpgrades(){
 		upgradeArray.pop(); // And trash the rest.
 	}
 //Rebuild the array of upgrade sprites
-	if (cursors >= 10 && !cursorUpgrade10Bought) { // 10 cursors, production x2, cost 50
+	if (cursorsBought >= 10 && !cursorUpgrade10Bought) { // 10 cursors, production x2, cost 50
 		upgradeArray.push({spriteIndex: 0, func: cursorUpgrade10, sprite: 0});
 	//	upgradeText += "<br><button onclick='cursorUpgrade10(50)'>Bronze Cursors - 50</button>";
         //	upgradeText += 'Increase Cursor output by 100%';
